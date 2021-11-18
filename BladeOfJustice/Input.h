@@ -1,6 +1,9 @@
 #pragma once
-#include "Renderer.h"
+#include <Windows.h>
+#include "KeyMacros.h"
 
 void PrepareInput();
 
-void InputLoop();
+extern char LastKey;
+
+LRESULT CALLBACK InputHookFunction(const int code, const WPARAM wParam, const LPARAM lParam);

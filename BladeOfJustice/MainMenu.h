@@ -1,9 +1,8 @@
 #pragma once
 #include <stdint.h>
+#include "Main.h"
 
-extern struct GameSection MainMenu;
-
-void MainMenu_Input(int* input,size_t l);
+void MainMenu_Input(char key);
 
 void MainMenu_Update(float dt);
 

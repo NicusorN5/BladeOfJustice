@@ -1,6 +1,7 @@
 #pragma once
-#include "Renderer.h"
 #include "MainMenu.h"
+#include "Input.h"
+#include "Renderer.h"
 
 extern int GameRunning;
 

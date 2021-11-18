@@ -108,3 +108,13 @@ void SetScreenCharacter(WORD color, COORD pos, char chr)
 	Screen[pos.Y][pos.X].Attributes = color;
 	Screen[pos.Y][pos.X].Char.AsciiChar = chr;
 }
+
+void WriteScreen(WORD color, COORD pos, char* str)
+{
+	size_t l = strlen(str);
+	for (unsigned i = 0; i < l; i++)
+	{
+		Screen[pos.Y][pos.X+i].Attributes = color;
+		Screen[pos.Y][pos.X+i].Char.AsciiChar = str[i];
+	}
+}

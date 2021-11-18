@@ -14,38 +14,47 @@ DWORD WINAPI DoGameInput(void * data)
 	enum GamePart GameSection = (enum GamePart)*((int*)data);
 	while (GameRunning)
 	{
-		if (_kbhit())
+		switch (GameSection)
 		{
-			int chr[] = { _getch(),_getch(),_getch(),_getch() }; //For arrow keys we need 2 function calls.
-			switch (GameSection)
+			case gamepart_MainMenu:
 			{
-				case gamepart_MainMenu:
-				{
-					MainMenu_Input(chr, 4);
-					break;
-				}
-				default: break;
+				MainMenu_Input(LastKey);
+				break;
 			}
+			default:
+				break;
 		}
 	}
 	return 0;
 }
+
+time_t Time1, Time2;
+
+
 DWORD WINAPI DoGameDrawing(void* data)
 {
 	enum GamePart GameSection = (enum GamePart)*((int*)data);
 
 	while (GameRunning)
 	{
+
+		Time1 = time(NULL);
 		ClearScreen();
-		for (int x = 0; x < GAME_SCREEN_X; x++)
+
+		switch (GameSection)
 		{
-			for (int y = 0; y < GAME_SCREEN_Y; y++)
+			case gamepart_MainMenu:
 			{
-				COORD p = { x,y };
-				SetScreenPixel((rand() % 16) * 0xA + 1, p);
+				MainMenu_Draw((float) (Time2 - Time1) / 1000 );
+				break;
 			}
+			default: 
+				break;
+
 		}
+
 		PrintScreen();
+		Time2 = time(NULL);
 		//Sleep(33);
 	}
 	return 0;
@@ -56,6 +65,7 @@ int main()
 	enum GamePart GameSection = gamepart_MainMenu;
 
 	PrepareConsoleForDrawing();
+	PrepareInput();
 
 	GameRunning = 1;
 
@@ -68,7 +78,20 @@ int main()
 		exit(-1);
 	}
 
-	WaitForSingleObject(DrawThread, INFINITE);
+	HANDLE InputThread = CreateThread(NULL, 1024, DoGameInput, &GameSection, 0, NULL);
+	if (InputThread == NULL)
+	{
+		MessageBoxA(NULL, "Failed to create input thread!", "Cannot start game", MB_OK | MB_ICONERROR);
+		exit(-2);
+	}
+
+	CloseHandle(DrawThread);
+	CloseHandle(InputThread);
+
+	while (GetMessageA(NULL, NULL, 0, 0) && GameRunning)
+	{
+
+	}
 
 	return 0;
 

@@ -22,3 +22,7 @@ DWORD GetConsoleTextAttribute(HANDLE hCon);
 void ClearScreen();
 
 void SetScreenPixel(WORD color, COORD pos);
+
+void SetScreenCharacter(WORD color, COORD pos, char chr);
+
+void WriteScreen(WORD color, COORD pos, char* str);

@@ -1,9 +1,14 @@
 #pragma once
 #include <stdint.h>
 #include "Main.h"
+#include "Sprite.h"
 
-void MainMenu_Input(char key);
+DWORD MainMenu_LoadContent();
+
+void MainMenu_Input(DWORD key);
 
 void MainMenu_Update(float dt);
 
 void MainMenu_Draw(float dt);
+
+void MainMenu_Unload();

@@ -1,8 +1,5 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
-#include <Windows.h>
-#include <stdio.h>
-#include <conio.h>
+#include "Globals.h"
 
 #define GAME_SCREEN_X 800
 #define GAME_SCREEN_Y 600
@@ -20,6 +17,8 @@ void PrintScreen();
 DWORD GetConsoleTextAttribute(HANDLE hCon);
 
 void ClearScreen();
+
+void ClearScreenWithColor(WORD color);
 
 void SetScreenPixel(WORD color, COORD pos);
 

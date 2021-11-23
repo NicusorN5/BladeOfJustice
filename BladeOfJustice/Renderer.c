@@ -84,19 +84,28 @@ void PrintScreen()
 #pragma warning(pop)
 }
 
-/*
-void PrintScreen()
-{
-	COORD top_left = { 0,0 };
-	DWORD useless;
-
-	WriteConsoleOutputAttribute(ConsoleHandle, Screen, 200 * 200, top_left, &useless);
-}*/
-
 void ClearScreen()
 {
-	//COORD pos = { 0,0 };
-	//SetConsoleCursorPosition(ConsoleHandle, pos);
+	for (int i = 0; i < GAME_SCREEN_Y; i++)
+	{
+		for (int j = 0; j < GAME_SCREEN_X; j++)
+		{
+			CHAR_INFO ci = { ' ',0x01 };
+			Screen[i][j] = ci;
+		}
+	}
+}
+
+void ClearScreenWithColor(WORD color)
+{
+	for (int i = 0; i < GAME_SCREEN_Y; i++)
+	{
+		for (int j = 0; j < GAME_SCREEN_X; j++)
+		{
+			CHAR_INFO ci = { ' ',color };
+			Screen[i][j] = ci;
+		}
+	}
 }
 
 void SetScreenPixel(WORD color,COORD pos)
@@ -105,8 +114,11 @@ void SetScreenPixel(WORD color,COORD pos)
 }
 void SetScreenCharacter(WORD color, COORD pos, char chr)
 {
-	Screen[pos.Y][pos.X].Attributes = color;
-	Screen[pos.Y][pos.X].Char.AsciiChar = chr;
+	if (pos.X < 800 && pos.Y < 600 && pos.X >= 0 && pos.Y >= 0) 
+	{
+		Screen[pos.Y][pos.X].Attributes = color;
+		Screen[pos.Y][pos.X].Char.AsciiChar = chr;
+	}
 }
 
 void WriteScreen(WORD color, COORD pos, char* str)

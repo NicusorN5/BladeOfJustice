@@ -1,5 +1,11 @@
 #include "BoJ_SpriteEditor.h"
 
+/*
+* 
+*	DO NOT USE THIS! I STILL DON'T KNOW HOW TO CALCULATE THE PAINSTRUCT::rcPaint RECTANGLE COORDINAGES BECAUSE THEY ARE ALWAYS SCREWED UP
+* 
+*/
+
 HWND ColorButtons[16];
 
 HBRUSH ColorBrushes[17];
@@ -255,7 +261,7 @@ LRESULT CALLBACK BoJ_Paint_WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
 			*/
 			PAINTSTRUCT ps;
 			BeginPaint(hwnd, &ps);
-			FillRect(ps.hdc, &ps.rcPaint, ColorBrushes[17]);
+			FillRect(ps.hdc, &ps.rcPaint, ColorBrushes[16]);
 			EndPaint(hwnd, &ps);
 			return 0;
 		}

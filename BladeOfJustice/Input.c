@@ -2,7 +2,7 @@
 
 HHOOK keyboardHook;
 
-char LastKey;
+DWORD LastKey;
 
 void PrepareInput()
 {
@@ -26,9 +26,8 @@ LRESULT CALLBACK InputHookFunction(const int code, const WPARAM wParam, const LP
 			BYTE lpKeyState[256];
 			if (GetKeyboardState(lpKeyState))
 			{
-				char result;
-				ToAscii(wVirtKey, wScanCode, lpKeyState, (LPWORD)&result, 0);
-				LastKey = result;
+				if(LastKey != wVirtKey)
+					LastKey = wVirtKey;
 			}
 			break;
 		}

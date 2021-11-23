@@ -1,7 +1,5 @@
 #include "Main.h"
 
-int GameRunning = 1;
-
 int Clamp(int a,int t, int b)
 {
 	if (t >= b) return b;
@@ -11,7 +9,6 @@ int Clamp(int a,int t, int b)
 
 DWORD WINAPI DoGameInput(void * data)
 {
-	enum GamePart GameSection = (enum GamePart)*((int*)data);
 	while (GameRunning)
 	{
 		switch (GameSection)
@@ -21,31 +18,54 @@ DWORD WINAPI DoGameInput(void * data)
 				MainMenu_Input(LastKey);
 				break;
 			}
+			case gamepart_Credits:
+			{
+				Credits_Input(LastKey);
+				break;
+			}
 			default:
 				break;
 		}
+		//input cleanup
+		LastKey = 0;
+		Sleep(33);
 	}
+
 	return 0;
 }
 
-time_t Time1, Time2;
-
+clock_t Time1,Time2;
 
 DWORD WINAPI DoGameDrawing(void* data)
 {
-	enum GamePart GameSection = (enum GamePart)*((int*)data);
-
 	while (GameRunning)
 	{
-
-		Time1 = time(NULL);
-		ClearScreen();
+		Time1 = clock();
+		ClearScreenWithColor(ClearColor);
 
 		switch (GameSection)
 		{
 			case gamepart_MainMenu:
 			{
-				MainMenu_Draw((float) (Time2 - Time1) / 1000 );
+				MainMenu_Draw(Time2);
+				break;
+			}
+			case gamepart_NewGame:
+			{
+				Game_Draw(Time2);
+				break;
+			}
+			case gamepart_LoadGame:
+			{
+				break;
+			}
+			case gamepart_Settings:
+			{
+				break;
+			}
+			case gamepart_Credits:
+			{
+				Credits_Draw(); //no need for a dt value.
 				break;
 			}
 			default: 
@@ -54,7 +74,7 @@ DWORD WINAPI DoGameDrawing(void* data)
 		}
 
 		PrintScreen();
-		Time2 = time(NULL);
+		Time2 = (float)(clock() - Time1) / CLOCKS_PER_SEC;
 		//Sleep(33);
 	}
 	return 0;
@@ -62,7 +82,12 @@ DWORD WINAPI DoGameDrawing(void* data)
 
 int main()
 {
-	enum GamePart GameSection = gamepart_MainMenu;
+	wchar_t file[MAX_PATH];
+	GetModuleFileNameW(NULL, file, MAX_PATH);
+	PathCchRemoveFileSpec(file, MAX_PATH);
+	SetCurrentDirectoryW(file);
+
+	GameSection = gamepart_MainMenu;
 
 	PrepareConsoleForDrawing();
 	PrepareInput();
@@ -71,14 +96,25 @@ int main()
 
 	SetConsoleTextAttribute(ConsoleHandle, 0x01);
 
-	HANDLE DrawThread = CreateThread(NULL, 1024, DoGameDrawing, &GameSection, 0, NULL);
+	if (MainMenu_LoadContent() != S_OK)
+	{
+		MessageBoxA(NULL, "Failed to load main menu sprite files!", "Loading fail!", MB_OK | MB_ICONERROR);
+		exit(-3);
+	}
+	if (InitializeNewGame() != S_OK)
+	{
+		MessageBoxA(NULL, "Failed to load the intro cutscene! Files are missing!", "Level loading failiure!", MB_OK | MB_ICONERROR);
+		exit(-4);
+	}
+
+	HANDLE DrawThread = CreateThread(NULL, 1024, DoGameDrawing, NULL, 0, NULL);
 	if (DrawThread == NULL)
 	{
 		MessageBoxA(NULL, "Failed to create drawing thread!", "Cannot start game", MB_OK | MB_ICONERROR);
 		exit(-1);
 	}
 
-	HANDLE InputThread = CreateThread(NULL, 1024, DoGameInput, &GameSection, 0, NULL);
+	HANDLE InputThread = CreateThread(NULL, 1024, DoGameInput, NULL, 0, NULL);
 	if (InputThread == NULL)
 	{
 		MessageBoxA(NULL, "Failed to create input thread!", "Cannot start game", MB_OK | MB_ICONERROR);
@@ -88,11 +124,17 @@ int main()
 	CloseHandle(DrawThread);
 	CloseHandle(InputThread);
 
-	while (GetMessageA(NULL, NULL, 0, 0) && GameRunning)
+	MSG m;
+	while (GameRunning)
 	{
-
+		PeekMessageA(&m, NULL, 0, 0,PM_REMOVE);
 	}
+	//cleanup
+
+	ClearScreen();
+	PrintScreen();
+
+	MainMenu_Unload();
 
 	return 0;
-
 }

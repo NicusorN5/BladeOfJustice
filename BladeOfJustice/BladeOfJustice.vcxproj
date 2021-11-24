@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="Credits.c" />
     <ClCompile Include="Cutscene.c" />
-    <ClCompile Include="Cutscene.cpp" />
     <ClCompile Include="Game.c" />
     <ClCompile Include="Globals.c" />
     <ClCompile Include="Input.c" />

@@ -39,9 +39,6 @@
     <ClCompile Include="TrollThePlayer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cutscene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cutscene.c">
       <Filter>Source Files</Filter>
     </ClCompile>

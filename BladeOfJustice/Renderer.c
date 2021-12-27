@@ -26,7 +26,7 @@ void PrepareConsoleForDrawing()
 	memset(&consoleFont, 0, sizeof(CONSOLE_FONT_INFOEX));
 	consoleFont.cbSize = sizeof(CONSOLE_FONT_INFOEX);
 	consoleFont.dwFontSize.X = 0;
-	consoleFont.dwFontSize.Y = 16;
+	consoleFont.dwFontSize.Y = 14;
 	consoleFont.FontFamily = FF_DONTCARE;
 	consoleFont.FontWeight = FW_NORMAL;
 	wcscpy(consoleFont.FaceName, L"Consolas");

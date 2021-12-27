@@ -25,7 +25,6 @@
     <ClCompile Include="Globals.c" />
     <ClCompile Include="Input.c" />
     <ClCompile Include="Level1.c" />
-    <ClCompile Include="Level1.cpp" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="MainMenu.c" />
     <ClCompile Include="Renderer.c" />

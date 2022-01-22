@@ -2,7 +2,7 @@
 
 int SelectionMenuIndex = 0;
 
-struct Sprite* Logo1, *Logo2, *Logo3;
+Sprite* Logo1, *Logo2, *Logo3;
 
 DWORD MainMenu_LoadContent()
 {

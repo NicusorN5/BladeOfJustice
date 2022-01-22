@@ -1,6 +1,7 @@
 #pragma once
 #include "Cutscene.h"
 #include "Level1.h"
+#include "Fight1.h"
 
 extern int GameLevel;
 

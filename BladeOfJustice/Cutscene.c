@@ -1,6 +1,6 @@
 #include "Cutscene.h"
 
-DWORD CreateAnimation(struct Animation** animation,struct Sprite* affected_sprite, COORD initial_pos, COORD final_pos, int frames)
+DWORD CreateAnimation(struct Animation** animation,Sprite* affected_sprite, COORD initial_pos, COORD final_pos, int frames)
 {
 	*animation = NULL;
 

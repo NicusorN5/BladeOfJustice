@@ -4,7 +4,7 @@ struct Animation Animations[5];
 
 struct Cutscene* IntroCutscene;
 
-struct Sprite* Temple, *God, *Book1, *Book2, *Book3, *Guardian,*Sword;
+Sprite* Temple, *God, *Book1, *Book2, *Book3, *Guardian,*Sword;
 
 struct Dialogue* d1;
 
@@ -48,7 +48,7 @@ void Cutscene1_Draw(float dt)
 	//I'm using the most stupid method to draw cutscenes : I'm going everything like I'm unrolling loops myself smh
 	//I should feel ashamed
 
-	//PlaySoundA("Music//Ost1_TheLegend.wav", NULL, SND_ASYNC | SND_FILENAME); //TODO: Enable/disable music in settings
+	PlaySoundA("Music//Ost1_TheLegend.wav", NULL, SND_ASYNC | SND_FILENAME); //TODO: Enable/disable music in settings
 
 	ClearColor = 0x10;
 	ClearScreenWithColor(ClearColor);
@@ -109,9 +109,32 @@ void Cutscene1_Draw(float dt)
 	Sleep(5000);
 	ClearColor = 0x00;
 
+	//prea putin progres fata de progresul de la prima prezentare
+	//jocul era supus sa fie mult mai mare decat atat :(
+	d1->Text = "But after years of searching, you're finally here...";
+	ClearScreenWithColor(0x70);
+	PrintScreen();
+	DrawDialogue(d1);
+	PrintScreen();
+	Sleep(5000);
+	
+	d1->Text = "But after years of searching, you're finally here...";
+	ClearScreenWithColor(0x70);
+	PrintScreen();
+	DrawDialogue(d1);
+	PrintScreen();
+	Sleep(5000);
+
+	d1->Text = "All you have to do left is fight the guards. Then you'll have supreme power...";
+	ClearScreenWithColor(0x70);
+	PrintScreen();
+	DrawDialogue(d1);
+	PrintScreen();
+	Sleep(5000);
+
 	PlaySound(NULL, 0, 0);
 	CutSceneDrawn = 1;
-	GameLevel = 1;
+	GameLevel = 1; //treci la primul battle.
 }
 
 void Cutscene1_Destroy()

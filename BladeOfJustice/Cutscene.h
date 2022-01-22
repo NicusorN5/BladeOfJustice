@@ -9,7 +9,7 @@
 
 struct Animation
 {
-	struct Sprite* sprite;
+	Sprite* sprite;
 	COORD initial_pos,to_pos;
 	int frames;
 };
@@ -23,7 +23,7 @@ struct Cutscene
 	int TotalCutsceneTime;
 };
 
-DWORD CreateAnimation(struct Animation** animation,struct Sprite* affected_sprite, COORD initial_pos, COORD final_pos,int frames);
+DWORD CreateAnimation(struct Animation** animation,Sprite* affected_sprite, COORD initial_pos, COORD final_pos,int frames);
 void DestroyAnimation(struct Animation* anim);
 
 DWORD CreateCutscene(struct Cutscene** cutscene,struct Animation* animations,size_t num_anims, int* offsets, int totaltime);
@@ -38,7 +38,6 @@ struct Dialogue
 	int Speed;
 	DWORD Color;
 };
-
 
 DWORD CreateDialogue(struct Dialogue** dialogue,char* text, int showtime, int speed, DWORD color);
 void DrawDialogue(struct Dialogue * dialogue);

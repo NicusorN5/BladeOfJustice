@@ -36,19 +36,31 @@
     <ClCompile Include="Credits.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TrollThePlayer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cutscene.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Level1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fight1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoadMenu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonFunctions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pellete.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,9 +86,6 @@
     <ClInclude Include="Credits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TrollThePlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cutscene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -84,6 +93,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fight1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoadMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pellete.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

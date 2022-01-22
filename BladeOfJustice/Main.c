@@ -1,12 +1,5 @@
 #include "Main.h"
 
-int Clamp(int a,int t, int b)
-{
-	if (t >= b) return b;
-	if (t <= a) return a;
-	else return t;
-}
-
 DWORD WINAPI DoGameInput(void * data)
 {
 	while (GameRunning)
@@ -16,6 +9,11 @@ DWORD WINAPI DoGameInput(void * data)
 			case gamepart_MainMenu:
 			{
 				MainMenu_Input(LastKey);
+				break;
+			}
+			case gamepart_NewGame:
+			{
+				Game_Input(LastKey);
 				break;
 			}
 			case gamepart_Credits:
@@ -74,7 +72,7 @@ DWORD WINAPI DoGameDrawing(void* data)
 		}
 
 		PrintScreen();
-		Time2 = (float)(clock() - Time1) / CLOCKS_PER_SEC;
+		Time2 = (float)((clock() - Time1) / CLOCKS_PER_SEC);
 		//Sleep(33);
 	}
 	return 0;

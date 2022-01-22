@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-DWORD CreateSpriteFromFile(struct Sprite** sprite, char* file,COORD expected_dimentions)
+DWORD CreateSpriteFromFile(Sprite** sprite, char* file,COORD expected_dimentions)
 {	
 	*sprite = NULL;
 
@@ -14,7 +14,7 @@ DWORD CreateSpriteFromFile(struct Sprite** sprite, char* file,COORD expected_dim
 	if (fptr == NULL) return ERROR_FILE_NOT_FOUND;
 	else
 	{
-		*sprite = malloc(sizeof(struct Sprite));
+		*sprite = malloc(sizeof(Sprite));
 
 		if (*sprite == NULL)
 		{
@@ -41,20 +41,20 @@ DWORD CreateSpriteFromFile(struct Sprite** sprite, char* file,COORD expected_dim
 	}
 }
 
-DWORD CreateEmptySprite(struct Sprite** sprite)
+DWORD CreateEmptySprite(Sprite** sprite)
 {
-	*sprite = malloc(sizeof(struct Sprite));
+	*sprite = malloc(sizeof(Sprite));
 
 	if (*sprite == NULL)
 	{
 		return E_OUTOFMEMORY;
 	}
 
-	memset(sprite, 17, sizeof(struct Sprite));
+	memset(sprite, 17, sizeof(Sprite));
 	return S_OK;
 }
 
-void RenderSprite(struct Sprite* sprite,COORD pos)
+void RenderSprite(Sprite* sprite,COORD pos)
 {
 	for (unsigned i = 0; i < sprite->X; i++)
 	{
@@ -69,20 +69,20 @@ void RenderSprite(struct Sprite* sprite,COORD pos)
 	}
 }
 
-void DestroySprite(struct Sprite* sprite)
+void DestroySprite(Sprite* sprite)
 {
 	free(sprite);
 }
 
-void DebugPrintSprite(struct Sprite* sprite)
+void DebugPrintSprite(Sprite* sprite)
 {
-	printf("SPRITE DEBUG PRINT: \n");
+	puts("SPRITE DEBUG PRINT:");
 	for (unsigned i = 0; i < sprite->X; i++)
 	{
 		for (unsigned j = 0; j < sprite->Y; j++)
 		{
 			printf("%i ", sprite->Spr[i][j]);
 		}
-		printf("\n");
+		puts("");
 	}
 }

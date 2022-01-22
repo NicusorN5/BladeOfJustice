@@ -19,30 +19,40 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommonFunctions.c" />
     <ClCompile Include="Credits.c" />
     <ClCompile Include="Cutscene.c" />
+    <ClCompile Include="Enemy.c" />
+    <ClCompile Include="Fight1.c" />
     <ClCompile Include="Game.c" />
+    <ClCompile Include="GameLoadMenu.c" />
     <ClCompile Include="Globals.c" />
     <ClCompile Include="Input.c" />
     <ClCompile Include="Level1.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="MainMenu.c" />
+    <ClCompile Include="Pellete.c" />
+    <ClCompile Include="Player.c" />
     <ClCompile Include="Renderer.c" />
     <ClCompile Include="Sprite.c" />
-    <ClCompile Include="TrollThePlayer.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommonFunctions.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="Cutscene.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Fight1.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameLoadMenu.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Pellete.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="TrollThePlayer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -55,26 +65,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>

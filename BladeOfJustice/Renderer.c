@@ -25,11 +25,11 @@ void PrepareConsoleForDrawing()
 	CONSOLE_FONT_INFOEX consoleFont;
 	memset(&consoleFont, 0, sizeof(CONSOLE_FONT_INFOEX));
 	consoleFont.cbSize = sizeof(CONSOLE_FONT_INFOEX);
-	consoleFont.dwFontSize.X = 0;
-	consoleFont.dwFontSize.Y = 14;
+	consoleFont.dwFontSize.X = 8;
+	consoleFont.dwFontSize.Y = 8;
 	consoleFont.FontFamily = FF_DONTCARE;
 	consoleFont.FontWeight = FW_NORMAL;
-	wcscpy(consoleFont.FaceName, L"Consolas");
+	wcscpy(consoleFont.FaceName, L"Raster Fonts");
 	SetCurrentConsoleFontEx(ConsoleHandle, FALSE, &consoleFont);
 	SetCurrentConsoleFontEx(ConsoleHandleInp, FALSE, &consoleFont);
 
@@ -74,8 +74,12 @@ void PrintScreen()
 	
 	SMALL_RECT r;
 	memset(&r, 0, sizeof(SMALL_RECT));
-	r.Bottom = GAME_SCREEN_Y;
-	r.Right = GAME_SCREEN_X;
+
+	RECT monitorResolution;
+	GetWindowRect(GetDesktopWindow(), &monitorResolution);
+
+	r.Bottom = monitorResolution.bottom;
+	r.Right = monitorResolution.right;
 
 #pragma warning(push)
 #pragma warning(disable: 4047)

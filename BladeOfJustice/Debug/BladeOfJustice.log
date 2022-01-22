@@ -1,0 +1,3 @@
+﻿  Renderer.c
+N:\Projects\BladeOfJustice\BladeOfJustice\Renderer.c(84,33): warning C4024: 'WriteConsoleOutputA': different types for formal and actual parameter 2
+  BladeOfJustice.vcxproj -> N:\Projects\BladeOfJustice\Debug\BladeOfJustice.exe
